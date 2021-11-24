@@ -4,6 +4,9 @@
       <ion-button routerLink="/">
         <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
+      <ion-button *ngIf="categorie" routerLink="/boutique/{{categorie.boutiqueID}}">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>
       <span *ngIf="categorie" ngDefaultControl [(ngModel)]="title">Catégorie : {{categorie.title}}</span>
