@@ -12,10 +12,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'add',
-    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
-  },
-  {
     path: 'boutique/:id',
     loadChildren: () => import('./boutique/boutique.module').then( m => m.BoutiquePageModule)
   },
@@ -46,6 +42,10 @@ const routes: Routes = [
   {
     path: 'produit-edit/:id',
     loadChildren: () => import('./produit-edit/produit-edit.module').then( m => m.Produit_editPageModule)
+  },
+  {
+    path: 'produit-add/:id',
+    loadChildren: () => import('./produit-add/produit-add.module').then( m => m.Produit_addPageModule)
   },
 ];
 

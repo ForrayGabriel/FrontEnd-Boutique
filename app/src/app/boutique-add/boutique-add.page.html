@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button routerLink="/"><ion-icon slot="icon-only" name="home"></ion-icon></ion-button>
+      <ion-button routerLink="/">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>
-      <span  ngDefaultControl [(ngModel)]="title">Nouvelle Boutique</span>
+      <span ngDefaultControl [(ngModel)]="title">Nouvelle Boutique</span>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="save()"> <ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
-      </ion-buttons>
+      <ion-button (click)="save()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -26,6 +30,6 @@
     <ion-item>
       <ion-textarea formControlName="description" rows="10"></ion-textarea>
     </ion-item>
-</form>
+  </form>
 
 </ion-content>

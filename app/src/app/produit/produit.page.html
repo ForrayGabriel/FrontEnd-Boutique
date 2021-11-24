@@ -2,6 +2,9 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button routerLink="/"><ion-icon slot="icon-only" name="home"></ion-icon></ion-button>
+      <ion-button *ngIf="produit" routerLink="/categorie/{{produit.categorieID}}">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>
       <span *ngIf="produit" ngDefaultControl [(ngModel)]="title">Produit : {{produit.title}}</span>

@@ -72,7 +72,7 @@ export class CategoriePage implements OnInit {
     });
 
     await loading.present();
-    await this.api.getProduits()
+    await this.api.getProduits(this.id)
       .subscribe(res => {
         console.log(res);
         this.produits = res;

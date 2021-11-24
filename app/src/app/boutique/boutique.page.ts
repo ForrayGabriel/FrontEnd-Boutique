@@ -9,24 +9,25 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
   styleUrls: ['./boutique.page.scss'],
 })
 export class BoutiquePage implements OnInit {
-  boutique : any;
-  categories : any;
-  api : RestService;
-  id : string;
-  title : string;
-  description : string;
-  boutiqueID : string;
+  boutique: any;
+  categories: any;
+  result: any;
+  api: RestService;
+  id: string;
+  title: string;
+  description: string;
+  boutiqueID: string;
 
-  constructor(public restapi: RestService, 
-    public loadingController: LoadingController, 
-    private route: ActivatedRoute, 
-    public router : Router) {
+  constructor(public restapi: RestService,
+    public loadingController: LoadingController,
+    private route: ActivatedRoute,
+    public router: Router) {
 
     this.api = restapi;
 
   }
 
-  async getBoutique(id:any) {
+  async getBoutique(id: any) {
     const loading = await this.loadingController.create({
       message: 'Loading'
     });
@@ -46,9 +47,9 @@ export class BoutiquePage implements OnInit {
 
   }
 
-  async saveBoutique(){
+  async saveBoutique() {
     await this.api.updateBoutique(this.boutique._id, this.boutique)
-    .subscribe(res => {
+      .subscribe(res => {
         console.log(res);
         this.router.navigate(['/']);
       }, (err) => {
@@ -56,9 +57,9 @@ export class BoutiquePage implements OnInit {
       });
   }
 
-  async deleteBoutique(){
+  async deleteBoutique() {
     await this.api.deleteBoutique(this.boutique._id)
-    .subscribe(res => {
+      .subscribe(res => {
         console.log(res);
         this.router.navigate(['/']);
       }, (err) => {
@@ -72,7 +73,7 @@ export class BoutiquePage implements OnInit {
     });
 
     await loading.present();
-    await this.api.getCategories()
+    await this.api.getCategories(this.id)
       .subscribe(res => {
         console.log(res);
         this.categories = res;
@@ -100,16 +101,16 @@ export class BoutiquePage implements OnInit {
   delete() {
 
     this.deleteBoutique();
-    
+
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((params : ParamMap)=> {
-      this.id=params.get('id');
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id');
     });
     this.getCategories();
     console.log("Current id: " + this.id);
     this.getBoutique(this.id);
-    
+
   }
 }
