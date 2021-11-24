@@ -81,9 +81,9 @@ export class RestService {
       catchError(this.handleError));
   }
 
-  getCategories(): Observable<any> {
+  getCategories(id:any): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/v1/categories";
+    const apiUrl = "http://localhost:3000/api/v1/categories/" + id;
 
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),
@@ -126,9 +126,9 @@ export class RestService {
       catchError(this.handleError));
   }
 
-  getProduits(): Observable<any> {
+  getProduits(id:any): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/v1/produits";
+    const apiUrl = "http://localhost:3000/api/v1/produits/" + id;
 
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),
