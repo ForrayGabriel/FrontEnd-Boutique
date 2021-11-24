@@ -12,8 +12,11 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class Categorie_addPage implements OnInit {
 
   private categorie : FormGroup;
+  private categorie2 : FormGroup;
   api : RestService;
   id : string;
+  title : string;
+  description : string;
   
 
   constructor(public restapi: RestService, 
@@ -22,10 +25,10 @@ export class Categorie_addPage implements OnInit {
     public router : Router,
     public formBuilder: FormBuilder) {
       this.categorie = this.formBuilder.group({
+        boutiqueID: [this.id] ,
         title: [''],
         description: [''],
       });
-
     this.api = restapi;
 
   }
@@ -43,7 +46,14 @@ export class Categorie_addPage implements OnInit {
   
 
   save() {
+    console.log(this.id);
+    this.description = this.categorie.value.description;
+    this.title = this.categorie.value.title;
+    console.log(this.description);
+    this.categorie.setValue({boutiqueID: this.id, title: this.title, description: this.description})
     console.log(this.categorie.value);
+    
+
     this.saveCategorie();
 
   }
