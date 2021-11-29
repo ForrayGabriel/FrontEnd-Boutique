@@ -72,7 +72,7 @@ export class Boutique_editPage implements OnInit {
     });
 
     await loading.present();
-    await this.api.getCategories()
+    await this.api.getCategories(this.id)
       .subscribe(res => {
         console.log(res);
         this.categories = res;
